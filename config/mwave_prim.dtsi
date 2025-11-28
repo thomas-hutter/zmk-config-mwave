@@ -44,6 +44,18 @@ endpoint_sideband_behaviors {
 };
 
 behaviors {
+        ad_a: adaptive_a {
+            compatible = "zmk,behavior-antecedent-morph";
+            label = "ADAPTIVE_A";
+            #binding-cells = <0>;
+            defaults = <&kp A>;
+            bindings = <&kp U>, <&kp O>;
+            antecedents = <Q Z>;
+            max-delay-ms = <250>;
+        };
+    };
+    
+behaviors {
     bth: bt_hold {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
