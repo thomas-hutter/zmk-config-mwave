@@ -86,7 +86,53 @@
             #binding-cells = <0>;
             bindings = <&kp E &kp I &kp N>;
             label = "MACRO_EIN";
-        };        
+        };
+                // delay (in milliseconds) to wait between keypresses in the macros
+        #ifndef SELECT_WORD_WAIT
+        #define SELECT_WORD_WAIT 10
+        #endif
+
+        // delay (in milliseconds) to keep a keypress held down before releasing it
+        #ifndef SELECT_WORD_TAP
+        #define SELECT_WORD_TAP 10
+        #endif
+
+        // select a word (jumps to next word upon each successive invocation)
+        // normal press goes to the right, press with shift to go to the left
+        select_word: select_word {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&select_word_right>, <&select_word_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        ZMK_MACRO(select_word_right,
+            wait-ms = <SELECT_WORD_WAIT>;
+            tap-ms = <SELECT_WORD_TAP>;
+            bindings = <&kp RIGHT &kp LA(RIGHT) &kp LA(LEFT) &kp LA(LS(RIGHT))>;
+        )
+        ZMK_MACRO(select_word_left,
+            wait-ms = <SELECT_WORD_WAIT>;
+            tap-ms = <SELECT_WORD_TAP>;
+            bindings = <&kp LEFT &kp LA(LEFT) &kp LA(RIGHT) &kp LA(LS(LEFT))>;
+        )
+        // select current line
+        // normal press goes down, press with shift to go up
+        select_line: select_line {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&select_line_right>, <&select_line_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        ZMK_MACRO(select_line_right,
+            wait-ms = <SELECT_WORD_WAIT>;
+            tap-ms = <SELECT_WORD_TAP>;
+            bindings = <&kp RIGHT &kp RIGHT &kp LG(LEFT) &kp LS(LG(RIGHT))>;
+        )
+        ZMK_MACRO(select_line_left,
+            wait-ms = <SELECT_WORD_WAIT>;
+            tap-ms = <SELECT_WORD_TAP>;
+            bindings = <&kp LEFT &kp LEFT &kp LG(RIGHT) &kp LS(LG(LEFT))>;
+        )        
     };
 
     keymap {
