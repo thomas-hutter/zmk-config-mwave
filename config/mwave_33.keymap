@@ -10,6 +10,18 @@
 / {
     #include "mwave_prim.dtsi"
 
+    behaviors {
+        th: th {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TH";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -26,12 +38,12 @@
             // -------------------------------------------------------------------------------------------------------
 
             bindings = <
-&kp ESC         &kp F1    &kp F2    &kp F3     &kp F4     &kp F5    &kp F6       &kp F7     &kp F8     &kp F9    &kp F10       &kp F11       &kp F12       &kp HOME    &kp END  &kp INSERT  &to 1
-&kp GRAVE       &kp N1    &kp N2    &kp N3     &kp N4     &kp N5    &kp N6       &kp N7     &kp N8     &kp N9    &kp N0        &kp MINUS     &kp EQUAL     &kp BSPC
-&kp TAB         &kp DE_Z  &kp DE_M  &kp DE_L   &kp DE_G   &kp DE_P  &kp DE_Q     &kp DE_F   &kp DE_O   &kp DE_U  &kp DE_ASTRK  &kp DE_PLUS   &kp DE_SLASH  &caps_word  &kp DEL
-&kp BSPC        &kp DE_D  &kp DE_S  &kp DE_R   &kp DE_T   &kp DE_B  &kp DE_Y     &kp DE_N   &kp DE_E   &kp DE_I  &kp DE_A      &kp DE_APOS   &kp RET       &kp PG_UP
-&mt LSHFT DE_X  &kp DE_K  &kp DE_V  &kp DE_C   &kp DE_W   &kp B     &kp DE_J     &kp DE_H   &kp COMMA  &kp DOT   &kp DE_UNDER  &kp DE_QMARK  &kp UP        &kp PG_DN
-&kp LCTRL       &kp LGUI  &kp LALT  &sk LSHFT  &kp SPACE  &kp RALT  &kp K_CMENU  &kp RCTRL  &kp LEFT   &kp DOWN  &kp RIGHT
+&kp ESC         &kp F1    &kp F2    &kp F3     &kp F4     &kp F5    &kp F6       &kp F7     &kp F8                &kp F9                &kp F10               &kp F11       &kp F12       &kp HOME    &kp END  &kp INSERT  &to 1
+&kp GRAVE       &kp N1    &kp N2    &kp N3     &kp N4     &kp N5    &kp N6       &kp N7     &kp N8                &kp N9                &kp N0                &kp MINUS     &kp EQUAL     &kp BSPC
+&kp TAB         &kp DE_Z  &kp DE_M  &kp DE_L   &kp DE_G   &kp DE_P  &kp DE_Q     &kp DE_F   &th DE_O_UMLAUT DE_O  &th DE_U_UMLAUT DE_U  &kp DE_ASTRK          &kp DE_PLUS   &kp DE_SLASH  &caps_word  &kp DEL
+&kp BSPC        &kp DE_D  &kp DE_S  &kp DE_R   &kp DE_T   &kp DE_B  &kp DE_Y     &kp DE_N   &kp DE_E              &kp DE_I              &th DE_A_UMLAUT DE_A  &kp DE_APOS   &kp RET       &kp PG_UP
+&mt LSHFT DE_X  &kp DE_K  &kp DE_V  &kp DE_C   &kp DE_W   &kp B     &kp DE_J     &kp DE_H   &kp COMMA             &kp DOT               &kp DE_UNDER          &kp DE_QMARK  &kp UP        &kp PG_DN
+&kp LCTRL       &kp LGUI  &kp LALT  &sk LSHFT  &kp SPACE  &kp RALT  &kp K_CMENU  &kp RCTRL  &kp LEFT              &kp DOWN              &kp RIGHT
             >;
         };
 
