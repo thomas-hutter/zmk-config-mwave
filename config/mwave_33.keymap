@@ -8,6 +8,7 @@
 #include <behaviors/advertising_mode.dtsi>
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
+#include "keys_de.h"
 
 / {
     #include "mwave_prim.dtsi"
