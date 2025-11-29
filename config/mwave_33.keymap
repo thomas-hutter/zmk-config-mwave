@@ -38,6 +38,55 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <24 25 38 37 52 66 67 68 69 70 71 72 73 84 82 83 81 80 79 78 53 54 39 26 27 40 55 56 57 58 59 45 16 15 30 29 28 41 42 43 44 7 8 9 11 10 12 13 14>;
+        };
+
+        hll: hll {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HLL";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <24 25 38 37 52 66 67 68 69 70 71 72 73 84 82 83 81 80 79 78 53 54 39 26 27 40 55 56 57 58 59 45 16 15 30 29 28 41 42 43 44 7 8 9 11 10 12 13 14>;
+        };
+
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <77 76 75 74 60 17 0 31 46 47 48 49 50 51 65 64 63 62 61 32 18 19 33 34 35 36 23 22 20 21 4 5 6 1 2 3>;
+        };
+
+        hlr: hlr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HLR";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <77 76 75 74 60 17 0 31 46 47 48 49 50 51 65 64 63 62 61 32 18 19 33 34 35 36 23 22 20 21 4 5 6 1 2 3>;
+        };
+    };
+
+    macros {
+        macro_ein: macro_ein {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp E &kp I &kp N>;
+            label = "MACRO_EIN";
+        };        
     };
 
     keymap {
